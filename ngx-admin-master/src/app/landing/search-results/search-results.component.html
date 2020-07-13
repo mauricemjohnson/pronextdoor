@@ -1,0 +1,67 @@
+<div class="row">
+<nb-card class="col-md-12" size='small'>
+<nb-card-header>
+  Search options
+</nb-card-header>
+<nb-card-body>
+  <form (ngSubmit)="search()" #form="ngForm" aria-labelledby="title">
+
+      <input class="col-md-10" nbInput
+             fullWidth
+             [(ngModel)]="searchTerm"
+             #email="ngModel"
+             name="searchTerm"
+             id="input-search"
+             placeholder="Search term"
+             fieldSize="large"
+             autofocus>
+  
+    <button class="col-md-2" nbButton
+            fullWidth
+            status="primary"
+            size="large">
+      Search
+    </button>
+  </form>
+</nb-card-body>
+</nb-card>
+</div>
+
+<div class="row">
+
+<nb-card size="medium" class="col-md-12">
+
+  <nb-card-header>
+    <span>Requests list</span>
+  </nb-card-header>
+
+  <nb-list class="user-activity-list">
+    <nb-list-item *ngFor="let item of requests">
+
+      <div class="visited-date">
+        {{ item.name }}
+      </div>
+
+      <div >
+        <div class="caption">Client</div>
+        <div class="value">{{ item.client }}</div>
+      </div>
+
+      <div >
+        <div class="caption">Professional</div>
+        <div class="value">{{ item.professional }}</div>
+      </div>
+
+      <div class="visited-percentages">
+        <div class="caption">Price, €</div>
+        <div class="delta value" [class.up]="item.deltaUp" [class.down]="!item.deltaUp">
+          <nb-icon [icon]="item.deltaUp ? 'arrow-up' : 'arrow-down'" pack="eva"></nb-icon>
+          {{ item.price }}€
+        </div>
+      </div>
+
+    </nb-list-item>
+  </nb-list>
+
+</nb-card>
+</div>

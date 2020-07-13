@@ -1,0 +1,89 @@
+<nb-card>
+  <nb-card-header><h1 id="title" class="title">Add a request proposal</h1></nb-card-header>
+  <nb-card-body>
+
+    <form (ngSubmit)="addRequest()" #form="ngForm" aria-labelledby="title">
+
+      <div class="form-control-group">
+        <label class="label" for="input-name">Name:</label>
+        <input nbInput
+               fullWidth
+               [(ngModel)]="request.name"
+               #name="ngModel"
+               name="name"
+               id="input-name"
+               placeholder="Name"
+               fieldSize="large"
+               autofocus
+               [status]="name.dirty ? (name.invalid  ? 'danger' : 'success') : ''"
+               [attr.aria-invalid]="name.invalid && name.touched ? true : null">
+        <ng-container *ngIf="name.invalid && name.touched">
+          <p class="caption status-danger" *ngIf="name.errors?.required">
+            Name is required!
+          </p>
+          <p class="caption status-danger" *ngIf="name.errors?.pattern">
+            Name should be the real one!
+          </p>
+        </ng-container>
+      </div>
+    
+      <div class="form-control-group">
+        <label class="label" for="input-price">price:</label>
+        <input nbInput
+               fullWidth
+               [(ngModel)]="request.price"
+               #price="ngModel"
+               name="price"
+               id="input-price"
+               placeholder="price"
+               fieldSize="large"
+               autofocus
+               [status]="price.dirty ? (price.invalid  ? 'danger' : 'success') : ''"
+               [attr.aria-invalid]="price.invalid && price.touched ? true : null">
+        <ng-container *ngIf="price.invalid && price.touched">
+          <p class="caption status-danger" *ngIf="price.errors?.required">
+            price is required!
+          </p>
+          <p class="caption status-danger" *ngIf="price.errors?.pattern">
+            price should be the real one!
+          </p>
+        </ng-container>
+      </div>
+    
+      <div class="form-control-group">
+        <label class="label" for="input-description">description:</label>
+        <input nbInput
+               fullWidth
+               [(ngModel)]="request.description"
+               #description="ngModel"
+               name="description"
+               id="input-description"
+               placeholder="description"
+               fieldSize="large"
+               autofocus
+               [status]="description.dirty ? (description.invalid  ? 'danger' : 'success') : ''"
+               [attr.aria-invalid]="description.invalid && description.touched ? true : null">
+        <ng-container *ngIf="description.invalid && description.touched">
+          <p class="caption status-danger" *ngIf="description.errors?.required">
+            description is required!
+          </p>
+          <p class="caption status-danger" *ngIf="description.errors?.pattern">
+            description should be the real one!
+          </p>
+        </ng-container>
+      </div>
+    
+      <button nbButton
+              fullWidth
+              status="primary"
+              size="large">
+        Add
+      </button>
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton hero status="primary" (click)="dismiss()">Dismiss Dialog</button>
+  </nb-card-footer>
+</nb-card>
+
+
